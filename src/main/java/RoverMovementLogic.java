@@ -36,6 +36,7 @@ public class RoverMovementLogic {
             String route = scanner.nextLine().trim();
             roversRoutsMap.put(parcingRoverData(roverPosition), route);
         }
+        scanner.close();
     }
 
 
