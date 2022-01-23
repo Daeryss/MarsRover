@@ -19,9 +19,9 @@ The output values are displayed in the console, representing the coordinates of 
 If the rover at the end point is outside the plateau, a corresponding message will be displayed and the coordinates of the finish point will not be displayed. (It is allowed for the rover to go beyond the plateau during the calculation, if the endpoint is inside).
 
 Examples of correct input of initial values for one rover:
-4 7\n
-2 4 S\n
-LLRMMRSR\n
+4 7
+2 4 S
+LLRMMRSR
 
 Examples of correct input of initial values for several rovers:
 23 43
