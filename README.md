@@ -33,4 +33,6 @@ RMLL
   
 19 4 N  
 LL  
+  
+After entering the route, it is mandatory to switch to a new line "\n"  
 
