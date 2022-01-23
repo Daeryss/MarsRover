@@ -8,7 +8,7 @@ Commands to execute:
 L - turn left without movement (N -> W; W-> S; S -> E; E->N),  
 R - turn right without movement (N -> E; E-> S; S->W; W->N),  
 M - step to the next cell without changing the direction of movement (1 1 N -> M -> 1 2 N; 1 1 S -> M -> 1 0 S; 1 1 E -> M -> 2 1 E; 1 1 W -> M -> 0 1 W).  
-The route command is accepted as a single line spaces are allowed, but not a line break (correctly LLMRRML; correctly - "  ", correctly - L L MR) 
+The route command is accepted as a single line without spaces (correctly LLMRRML; correctly - "  ", incorrectly - L L MR) 
 If the route line is empty, the rover does not change its position.  
 To move to the next rover, repeat the operations that set the starting point and route.  
   
@@ -26,7 +26,7 @@ LLRMMRSR
 Examples of correct input of initial values for several rovers:  
 23 43  
 12 32 E  
-MML   RRLM LMRM  
+MMLRRLMLMRM  
 2 11 S  
 RMLL  
 3 15 W  
