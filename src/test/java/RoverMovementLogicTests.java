@@ -105,7 +105,7 @@ public class RoverMovementLogicTests {
     }
 
     @Test
-    public void incorrectFinishRoverPosition() {
+    public void incorrectFinishRoverPositionTest() {
         InputStream inputStream = System.in;
         System.setIn(new ByteArrayInputStream("5 5\n0 0 N\n MMMMMMM\n".getBytes()));
 
@@ -121,5 +121,43 @@ public class RoverMovementLogicTests {
 
         String outputText = byteArrayOutputStream.toString();
         assertTrue("Check field size data", outputText.contains("The rover has gone beyond the borders of the plateau"));
+    }
+
+    @Test
+    public void routeWithTest() {
+        InputStream inputStream = System.in;
+        System.setIn(new ByteArrayInputStream("5 5\n0 0 N\n MMMM MMM\n".getBytes()));
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+        PrintStream systemOut = System.out;
+        System.setOut(printStream);
+
+        StartProgram.main(new String[0]);
+
+        System.setIn(inputStream);
+        System.setOut(systemOut);
+
+        String outputText = byteArrayOutputStream.toString();
+        assertTrue("Check route", outputText.contains("Incorrect data in the line describing the route"));
+    }
+
+    @Test
+    public void routeWithIllegalSymbTest() {
+        InputStream inputStream = System.in;
+        System.setIn(new ByteArrayInputStream("5 5\n0 0 N\n MMMDMMMM\n".getBytes()));
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+        PrintStream systemOut = System.out;
+        System.setOut(printStream);
+
+        StartProgram.main(new String[0]);
+
+        System.setIn(inputStream);
+        System.setOut(systemOut);
+
+        String outputText = byteArrayOutputStream.toString();
+        assertTrue("Check route", outputText.contains("Incorrect data in the line describing the route"));
     }
 }

@@ -75,12 +75,15 @@ public class RoverMovementLogic {
     public void moving() {
         for (RoverUnit unit : roversRoutsMap.keySet()) {
             if (unit != null) {
+                if(roversRoutsMap.get(unit).trim().equals("")){
+                    results.add(unit.toString());
+                    break;
+                } else if (!isCorrectRoute(roversRoutsMap.get(unit))) {
+                    results.add("Incorrect data in the line describing the route");
+                    break;
+                }
                 String[]route = roversRoutsMap.get(unit).split("");
                 for (String action : route) {
-                    if (action.trim().equals("")) {
-                        results.add(unit.toString());
-                        break;
-                    }
                     switch (action.toUpperCase()) {
                         case "L":
                             switch (unit.getDirection()) {
@@ -131,7 +134,6 @@ public class RoverMovementLogic {
                             }
                             break;
                         default:
-                            results.add("incorrect data in the line describing the route");
                             break;
                     }
                 }
@@ -145,6 +147,15 @@ public class RoverMovementLogic {
             }
 
         }
+    }
+
+    static private boolean isCorrectRoute(String route) {
+        for (String str : route.toUpperCase().split("")) {
+            if(!str.matches("(L|R|M)")) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void showResult(){
